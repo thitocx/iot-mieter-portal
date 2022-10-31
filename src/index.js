@@ -6,14 +6,16 @@ import Blogs from "./pages/Blogs";
 import LineChart from "./App";
 
 
-export default function App() {
+
+
+function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="diagram" element={<LineChart />} />
-          <Route path="blog" element={<Blogs />} />        
+          <Route path={"/diagram/1337" } element={<LineChart />} />
+          <Route path="blog" element={<Blogs />} />     
         </Route>
       </Routes>
     </BrowserRouter>

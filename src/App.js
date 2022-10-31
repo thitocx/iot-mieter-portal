@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import BarChart from "./components/BarChart";
+import LineChart from "./components/LineChart";
+import { UserData } from "./Data";
 
 function App() {
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.time),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: UserData.map((data) => data.consumption),
+        backgroundColor: [
+          "rgb(211,211,211)",
+        ],
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  });
+
+  // IF YOU SEE THIS COMMENT: I HAVE GOOD EYESIGHT
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ width: 700 }}>
+        <BarChart chartData={userData} />
+      </div>
+      <div style={{ width: 700 }}>
+        <LineChart chartData={userData} />
+      </div>
     </div>
   );
 }

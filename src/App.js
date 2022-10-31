@@ -9,7 +9,7 @@ function App() {
     labels: UserData.map((data) => data.time),
     datasets: [
       {
-        label: "Users Gained",
+        label: "consumption",
         data: UserData.map((data) => data.consumption),
         backgroundColor: [
           "rgb(211,211,211)",

@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    working_dir: /app
+    image: app:react
+    container_name: iot_mieter
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: iot
+    command: npm start
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - iot-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: iot
+
+volumes:
+  iot-mysql-data:
+
+  

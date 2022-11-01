@@ -48,12 +48,14 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.post("/diagramm", (req, res) =>{
+app.post("/diagram", (req, res) =>{
     const id = req.body.id;
 
     console.log(id);
 
-    db.query("SELECT * FROM [] WHERE [] = ?",
+    //res.send(id);
+
+    db.query("SELECT * FROM data WHERE iot_id = ?",
         [id],
         (err, result) => {
             if(err){
@@ -62,8 +64,6 @@ app.post("/diagramm", (req, res) =>{
 
             if(result.length > 0){
                 res.send(result);
-            }else{
-                res.send({ message: "No results"});
             }
             
     });

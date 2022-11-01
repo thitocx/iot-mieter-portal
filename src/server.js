@@ -48,6 +48,27 @@ app.post("/login", (req, res) => {
     });
 });
 
+app.post("/diagramm", (req, res) =>{
+    const id = req.body.id;
+
+    console.log(id);
+
+    db.query("SELECT * FROM [] WHERE [] = ?",
+        [id],
+        (err, result) => {
+            if(err){
+                res.send({err: err});
+            }
+
+            if(result.length > 0){
+                res.send(result);
+            }else{
+                res.send({ message: "No results"});
+            }
+            
+    });
+});
+
 app.listen(3001, () =>{
     console.log("running server");
 });

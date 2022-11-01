@@ -5,20 +5,8 @@ import { Outlet, Link } from "react-router-dom";
 const Layout = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">Diagram</Link>
-          </li>
-          <li>
-            <Link to="/test">Test</Link>
-          </li>
-        </ul>
-        <hr></hr>
-      </nav>
+    
+    <br></br>
 
       
 
@@ -28,3 +16,24 @@ const Layout = () => {
 };
 
 export default Layout;
+
+
+/*
+
+  <nav>
+        <ul>
+        <li>
+            <Link to="/">Login</Link>
+          </li>
+          <li>
+            <Link to="/diagram">Diagram</Link>
+          </li>
+          <li>
+            <Link to="/test">Test</Link>
+          </li>
+        </ul>
+        <hr></hr>
+      </nav>
+
+
+*/

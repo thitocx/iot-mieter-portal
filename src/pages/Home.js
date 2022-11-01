@@ -14,7 +14,7 @@ const routeChange = () =>{
 
    return( 
       <>
-      <h1>Home</h1>
+      <h1>Diagram</h1>
       <container>
          <form required>
             <input type="text" placeholder="User ID " id="userid" name="userid" required/>

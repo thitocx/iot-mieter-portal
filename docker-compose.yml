@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  iot-mieter-app:
+    image: node:12-alpine
+    command: sh -c "npm install && npm start"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: iot
+
+  iot-mieter-backend:
+    image: node:12-alpine
+    build:
+      context: ./backend
+    ports:
+      - 5000:5000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: iot
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - iot-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: iot
+
+volumes:
+  iot-mysql-data:

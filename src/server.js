@@ -14,7 +14,7 @@ app.use(cors());
 
 const db =mysql.createConnection({
     user:"root",
-    host: "localhost",
+    host: "mysql",
     password: "password",
     database: "iot",
 
@@ -23,7 +23,7 @@ const db =mysql.createConnection({
 
 db.query('CREATE TABLE IF NOT EXISTS data (iot_id varchar(255), consumption double(9,2), time datetime) DEFAULT CHARSET utf8mb4',
     err => {
-        if (err) return rej(err);
+        if (err) return (err);
 
         console.log(`Connected to mysql db at host ${HOST}`);
         acc();
@@ -32,7 +32,7 @@ db.query('CREATE TABLE IF NOT EXISTS data (iot_id varchar(255), consumption doub
 
 db.query('CREATE TABLE IF NOT EXISTS users (username varchar(255), password varchar(255)) DEFAULT CHARSET utf8mb4',
     err => {
-        if (err) return rej(err);
+        if (err) return (err);
 
         console.log(`Connected to mysql db at host ${HOST}`);
         acc();

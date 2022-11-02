@@ -51,10 +51,6 @@ app.post("/login", (req, res) => {
 app.post("/diagram", (req, res) =>{
     const id = req.body.id;
 
-    console.log(id);
-
-    //res.send(id);
-
     db.query("SELECT * FROM data WHERE iot_id = ?",
         [id],
         (err, result) => {
@@ -68,6 +64,17 @@ app.post("/diagram", (req, res) =>{
             
     });
 });
+
+app.post("/iotdata", (req, res) =>{
+
+    db.query("INSERT INTO data (iot_id, consumption, time) VALUES (?,?,?)",
+        [req.body.iot_id, req.body.consumption, req.body.time],
+        (err, result) => {
+            console.log(err)
+            res.send(result);
+    });
+
+})
 
 app.listen(3001, () =>{
     console.log("running server");

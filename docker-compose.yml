@@ -24,6 +24,8 @@ services:
     environment: 
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: iot
+    ports:
+      - 3006:3006
 
 volumes:
   iot-mysql-data:

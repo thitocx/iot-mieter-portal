@@ -17,7 +17,7 @@ function Home(){
    //let path = '/diagram'; 
    //navigate(path);
 
-   Axios.post('http://localhost:3000/diagram', {
+   Axios.post('http://localhost:3001/diagram', {
       id: id
     }).then((response) => {
       setTest(response.data.message);

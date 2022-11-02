@@ -17,7 +17,11 @@ function Home(){
    //let path = '/diagram'; 
    //navigate(path);
 
+<<<<<<< Updated upstream
    Axios.post('http://localhost:3001/diagramm', {
+=======
+   Axios.post('http://localhost:3000/diagram', {
+>>>>>>> Stashed changes
       id: id
     }).then((response) => {
       setTest(response.data.message);

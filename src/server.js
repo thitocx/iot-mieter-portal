@@ -5,6 +5,9 @@ const cors = require('cors');
 const app = express();
 
 
+const moment = require('moment');
+
+
 app.use(express.json());
 app.use(cors());
 
@@ -13,8 +16,29 @@ const db =mysql.createConnection({
     user:"root",
     host: "localhost",
     password: "password",
-    database: "mydb",
+    database: "iot",
+
+
 });
+
+db.query('CREATE TABLE IF NOT EXISTS data (iot_id varchar(255), consumption double(9,2), time datetime) DEFAULT CHARSET utf8mb4',
+    err => {
+        if (err) return rej(err);
+
+        console.log(`Connected to mysql db at host ${HOST}`);
+        acc();
+    },
+);
+
+db.query('CREATE TABLE IF NOT EXISTS users (username varchar(255), password varchar(255)) DEFAULT CHARSET utf8mb4',
+    err => {
+        if (err) return rej(err);
+
+        console.log(`Connected to mysql db at host ${HOST}`);
+        acc();
+    },
+);
+
 
 app.post("/register", (req, res) => {
     const username =req.body.username;
@@ -23,7 +47,8 @@ app.post("/register", (req, res) => {
     db.query("INSERT INTO users (username, password) VALUES (?,?)",
         [username, password],
         (err, result) => {
-            console.log(err)
+            console.log(err);
+            console.log(result);
     });
 });
 
@@ -69,6 +94,25 @@ app.post("/diagramm", (req, res) =>{
     });
 });
 
+<<<<<<< Updated upstream
 app.listen(3001, () =>{
+=======
+
+
+app.post("/iotdata", (req, res) =>{
+
+    var mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+
+    db.query("INSERT INTO data (iot_id, consumption, time) VALUES (?,?,?)",
+        [req.body.iot_id, req.body.consumption, mysqlTimestamp],
+        (err, result) => {
+            console.log(err)
+            res.send(result);
+    });
+
+})
+
+app.listen(3000, () =>{
+>>>>>>> Stashed changes
     console.log("running server");
 });

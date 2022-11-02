@@ -13,16 +13,26 @@ services:
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
+<<<<<<< Updated upstream
       MYSQL_PASSWORD: secret
       MYSQL_DB: iot
     command: npm start
+=======
+      MYSQL_PASSWORD: password
+      MYSQL_DB: iot
+    command: npm start && node /src/server.js
+>>>>>>> Stashed changes
 
   mysql:
     image: mysql:5.7
     volumes:
       - iot-mysql-data:/var/lib/mysql
     environment: 
+<<<<<<< Updated upstream
       MYSQL_ROOT_PASSWORD: secret
+=======
+      MYSQL_ROOT_PASSWORD: password
+>>>>>>> Stashed changes
       MYSQL_DATABASE: iot
 
 volumes:

@@ -1,3 +1,7 @@
 .dockerignore
+<<<<<<< Updated upstream
 Dockerfile
 node_modules/
+=======
+Dockerfile
+>>>>>>> Stashed changes

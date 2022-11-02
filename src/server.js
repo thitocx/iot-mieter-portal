@@ -94,11 +94,6 @@ app.post("/diagramm", (req, res) =>{
     });
 });
 
-<<<<<<< Updated upstream
-app.listen(3001, () =>{
-=======
-
-
 app.post("/iotdata", (req, res) =>{
 
     var mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
@@ -113,6 +108,5 @@ app.post("/iotdata", (req, res) =>{
 })
 
 app.listen(3000, () =>{
->>>>>>> Stashed changes
     console.log("running server");
 });
